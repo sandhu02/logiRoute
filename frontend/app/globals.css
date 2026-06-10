@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ensure readable form fields and utility colors in dark mode */
+@media (prefers-color-scheme: dark) {
+  /* Make form controls inherit readable foreground */
+  input,
+  textarea,
+  select,
+  button {
+    color: var(--foreground);
+    background-color: transparent;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af; /* lighter placeholder */
+    opacity: 1;
+  }
+
+  /* Tweak a few Tailwind utility classes used across the app so
+     components designed for light mode remain legible in dark mode */
+  .bg-white { background-color: #0b1220 !important; }
+  .bg-gray-50 { background-color: #05060a !important; }
+  .bg-gray-100 { background-color: #0b0b0f !important; }
+
+  .text-gray-900 { color: var(--foreground) !important; }
+  .text-gray-700 { color: #d1d5db !important; }
+  .text-gray-600 { color: #9ca3af !important; }
+  .text-gray-500 { color: #9ca3af !important; }
+
+  .border-gray-300 { border-color: #374151 !important; }
+  .border-gray-100 { border-color: #1f2937 !important; }
+}
